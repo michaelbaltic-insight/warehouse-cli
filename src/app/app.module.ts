@@ -3,7 +3,6 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { FormsModule, ReactiveFormsModule, NgControl } from "@angular/forms";
-import { FileDropDirective, FileSelectDirective } from "ng2-file-upload";
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -24,8 +23,6 @@ import { fakeBackendProvider } from './_helpers';
   declarations: [
     AppComponent,
     NavbarComponent,
-    FileSelectDirective,
-    FileDropDirective,
     RegistrationFormComponent,
     LoginFormComponent,
     HomeComponent,
