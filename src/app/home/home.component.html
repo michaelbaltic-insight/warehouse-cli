@@ -1,0 +1,17 @@
+<div class="form-viewer">
+  <mat-card>
+
+    <mat-card-title>
+      {{ title }}
+    </mat-card-title>
+
+    <mat-card-content>
+
+    </mat-card-content>
+
+    <mat-card-actions>
+        <button mat-raised-button color="primary" routerLink="/warehouse-search" [disabled]="isAdmin">!isAdmin = Disabled</button>
+        <button mat-raised-button color="primary" routerLink="/warehouse-search" *ngIf="isAdmin">isAdmin = Visible</button>
+    </mat-card-actions>
+
+  </mat-card>
