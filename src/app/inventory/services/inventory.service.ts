@@ -3,12 +3,12 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, BehaviorSubject } from 'rxjs';
 import { map } from 'rxjs/operators';
 
-import { ConfigService } from '../utils/config.service';
-import { BaseService } from "./base.service";
-import { Item } from '../models';
+import { BaseApiService } from 'src/app/shared/services';
+import { ConfigService } from 'src/app/shared/utils';
+
 
 @Injectable({ providedIn: 'root' })
-export class WarehouseService extends BaseService {
+export class InventoryService extends BaseApiService {
 
   baseApiUrl = '';
 

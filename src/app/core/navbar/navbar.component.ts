@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { AuthService } from '../shared/services';
-import { User } from '../shared/models';
+import { AuthService } from '../../auth/services';
+import { User } from '../../auth/models';
 
 @Component({
   templateUrl: 'navbar.component.html',

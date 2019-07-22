@@ -2,12 +2,12 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { of, Observable, BehaviorSubject } from 'rxjs';
 import { catchError, mapTo, tap } from 'rxjs/operators';
-import { ConfigService } from '../utils';
-import { Tokens, User } from '../models';
-import { BaseService } from './base.service';
+import { ConfigService } from '../../shared/utils';
+import { BaseApiService } from '../../shared/services';
+import { User } from '../models';
 
 @Injectable({ providedIn: 'root' })
-export class AuthService extends BaseService {
+export class AuthService extends BaseApiService {
 
     baseApiUrl = '';
     private readonly ACCESS_TOKEN = 'accessToken';
@@ -51,8 +51,8 @@ export class AuthService extends BaseService {
     refreshToken() {
         return this.http.post<any>(`${this.baseApiUrl}/auth/refreshToken`, {
             refreshToken: this.getRefreshToken()
-        }).pipe(tap((tokens: Tokens) => {
-            this.storeAccessToken(tokens.accessToken.token);
+        }).pipe(tap((user: User) => {
+            this.storeAccessToken(user.accessToken.token);
         }));
     }
 

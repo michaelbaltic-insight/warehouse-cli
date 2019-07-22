@@ -4,28 +4,29 @@ import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { first } from 'rxjs/operators';
 
-import { WarehouseService } from '../shared/services';
-import { Item } from '../shared/models';
+import { Item } from '../models/item.interface';
+import { InventoryService } from '../services/inventory.service';
 
-@Component({ templateUrl: 'warehouse-search.component.html' })
-export class WarehouseSearchComponent implements OnInit {
+
+@Component({ templateUrl: 'inventory-search.component.html' })
+export class InventorySearchComponent implements OnInit {
   items: Item[];
   dataSource = new MatTableDataSource<Item>();
   displayedColumns: string[] = ['number', 'type', 'status', 'units'];
   loading = false;
+  title = 'Inventory Search';
 
   @ViewChild(MatSort, { static: true }) sort: MatSort;
 
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private warehouseService: WarehouseService) { }
+    private inventoryService: InventoryService) { }
 
-  title = 'Warehouse Search';
 
   ngOnInit() {
 
-      this.warehouseService.getItems()
+      this.inventoryService.getItems()
         .subscribe(getItemsResponse => {
           this.items = getItemsResponse;
           this.dataSource.data = this.items;

@@ -4,7 +4,7 @@
       <mat-icon>home</mat-icon>
       Home
     </a>
-    <a mat-button routerLink="/warehouse-search" *ngIf="isAdmin">Warehouse Search</a>
+    <a mat-button [routerLink]="['/warehouse-search']" [routerLinkActive]="['router-link-active']" [routerLinkActiveOptions]="{exact:true}" *ngIf="isAdmin">Warehouse Search</a>
     <span class="toolbar-spacer"></span>
     <a mat-button *ngIf="currentUser" (click)="logout()">Logout</a>
     <mat-icon class="toolbar-icon">verified_user</mat-icon>

@@ -3,16 +3,10 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
 
-import { Credentials } from '../shared/models';
-import { AuthService } from '../shared/services';
+import { AuthService } from '../services';
 
-@Component({ templateUrl: 'registration-form.component.html' })
-export class RegistrationFormComponent implements OnInit {
-  registrationForm: FormGroup;
-  loading = false;
-  submitted = false;
-  returnUrl: string;
-  error = '';
+@Component({ templateUrl: 'login-form.component.html' })
+export class LoginFormComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
@@ -20,40 +14,38 @@ export class RegistrationFormComponent implements OnInit {
     private router: Router,
     private authService: AuthService) { }
 
+  // convenience getter for easy access to form fields
+  get f() { return this.loginForm.controls; }
+  loginForm: FormGroup;
+  loading = false;
+  submitted = false;
+  returnUrl: string;
+  error = '';
+  title = 'Login';
+
   ngOnInit() {
-    this.registrationForm = this.formBuilder.group({
-      firstName: ['', Validators.required],
-      lastName: ['', Validators.required],
-      email: ['', Validators.required],
+    this.loginForm = this.formBuilder.group({
       userName: ['', Validators.required],
       password: ['', Validators.required]
     });
 
-    // reset registration status
+    // reset login status
     this.authService.logout();
 
     // get return url from route parameters or default to '/home'
-    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/home';
+    this.returnUrl = this.route.snapshot.queryParams.returnUrl || '/home';
   }
 
-  title: string = 'Register';
-
-  // convenience getter for easy access to form fields
-  get f() { return this.registrationForm.controls; }
-
-  onRegister() {
+  onLogin() {
     this.submitted = true;
 
     // stop here if form is invalid
-    if (this.registrationForm.invalid) {
+    if (this.loginForm.invalid) {
       return;
     }
 
     this.loading = true;
-    this.authService.register({
-      firstName: this.f.firstName.value,
-      lastName: this.f.lastName.value,
-      email: this.f.email.value,
+    this.authService.login({
       userName: this.f.userName.value,
       password: this.f.password.value
     })

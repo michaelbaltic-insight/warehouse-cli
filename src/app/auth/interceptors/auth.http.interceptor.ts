@@ -3,7 +3,7 @@ import { HttpRequest, HttpHandler, HttpEvent, HttpInterceptor, HttpErrorResponse
 import { AuthService } from '../services';
 import { Observable, throwError, BehaviorSubject } from 'rxjs';
 import { catchError, filter, take, switchMap } from 'rxjs/operators';
-import { Tokens } from '../models';
+import { User } from '../models';
 
 @Injectable()
 export class AuthHttpInterceptor implements HttpInterceptor {
@@ -42,10 +42,10 @@ export class AuthHttpInterceptor implements HttpInterceptor {
             this.refreshTokenSubject.next(null);
 
             return this.authService.refreshToken().pipe(
-                switchMap((token: Tokens) => {
+                switchMap((user: User) => {
                     this.isRefreshing = false;
-                    this.refreshTokenSubject.next(token.accessToken);
-                    return next.handle(this.addAuthorizationHeader(request, token.accessToken.token));
+                    this.refreshTokenSubject.next(user.accessToken.token);
+                    return next.handle(this.addAuthorizationHeader(request, user.accessToken.token));
                 }));
 
         } else {

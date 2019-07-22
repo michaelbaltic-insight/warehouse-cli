@@ -2,41 +2,39 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
-import { FormsModule, ReactiveFormsModule, NgControl } from "@angular/forms";
+import { FormsModule, ReactiveFormsModule, NgControl } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import { CustomMaterialModule } from "./material.module";
-import { FlexLayoutModule } from '@angular/flex-layout';
+import { CustomMaterialModule } from './material.module';
+// import { FlexLayoutModule } from '@angular/flex-layout';
 import { AppRoutingModule } from './app-routing.module';
-import { AuthHttpInterceptor } from './shared/interceptors';
-import { NavbarComponent } from './navbar/navbar.component';
-import { RegistrationFormComponent } from './registration-form/registration-form.component';
-import { LoginFormComponent } from './login-form/login-form.component';
-import { HomeComponent } from './home/home.component';
-import { WarehouseSearchComponent } from './warehouse-search/warehouse-search.component';
+
+import { CoreModule } from './core/core.module';
+import { AboutModule } from './about/about.module';
+import { HomeModule } from './home/home.module';
+import { AuthModule } from './auth/auth.module';
 import { ConfigService } from './shared/utils';
 
 import { fakeBackendProvider } from './_helpers';
+import { AuthHttpInterceptor } from './auth/interceptors';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    NavbarComponent,
-    RegistrationFormComponent,
-    LoginFormComponent,
-    HomeComponent,
-    WarehouseSearchComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
-    FlexLayoutModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule,
     CustomMaterialModule,
-    BrowserAnimationsModule
+    HttpClientModule,
+    CoreModule,
+    AboutModule,
+    AuthModule,
+    HomeModule
   ],
   providers: [
 
