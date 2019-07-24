@@ -17,8 +17,23 @@ export class InventoryService extends BaseApiService {
     this.baseApiUrl = configService.getApiUri();
   }
 
-  getItems() {
-    return this.http.get<any>(`${this.baseApiUrl}/warehouse/items`)
+  getManifests() {
+    return this.http.get<any>(`${this.baseApiUrl}/inventory/manifest`)
+      .pipe(map(data => data));
+  }
+
+  getManifestById(id: string) {
+    return this.http.get<any>(`${this.baseApiUrl}/inventory/manifest/${id}`)
+      .pipe(map(data => data));
+  }
+
+  getManifestItems(id: string) {
+    return this.http.get<any>(`${this.baseApiUrl}/inventory/manifest/${id}/items`)
+      .pipe(map(data => data));
+  }
+
+  add(inventoryItem: { number: string, type: string, status: string, units: number }) {
+    return this.http.post<any>(`${this.baseApiUrl}/inventory`, inventoryItem)
       .pipe(map(data => data));
   }
 }
