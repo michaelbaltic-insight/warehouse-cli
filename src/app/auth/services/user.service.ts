@@ -4,7 +4,7 @@ import { Observable, BehaviorSubject } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 import { BaseApiService } from 'src/app/shared/services';
-import { ConfigService } from 'src/app/shared/utils';
+import { ConfigService } from 'src/app/shared/services';
 
 @Injectable({ providedIn: 'root' })
 export class UserService extends BaseApiService {

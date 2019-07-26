@@ -6,7 +6,7 @@ import { first } from 'rxjs/operators';
 
 import { InventoryItem } from '../models';
 import { InventoryService } from '../services';
-import { ConfigService, ErrorService } from 'src/app/shared/services';
+import { ConfigService } from 'src/app/shared/services';
 
 
 @Component({
@@ -27,8 +27,7 @@ export class InventoryItemsComponent implements OnInit {
     private activeRoute: ActivatedRoute,
     private router: Router,
     private inventoryService: InventoryService,
-    private configService: ConfigService,
-    private errorService: ErrorService) { }
+    private configService: ConfigService) { }
 
 
   ngOnInit() {
@@ -37,8 +36,6 @@ export class InventoryItemsComponent implements OnInit {
       .subscribe(searchResponse => {
         this.inventoryItems = searchResponse;
         this.dataSource.data = searchResponse.inventoryItems;
-      }, (error) => {
-        this.errorService.handleError(error);
       });
   }
 

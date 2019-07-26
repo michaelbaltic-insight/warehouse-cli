@@ -3,9 +3,9 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 
-import { Manifest } from '../models';
 import { InventoryService } from '../services';
-import { ConfigService, ErrorService } from 'src/app/shared/services';
+import { ConfigService } from 'src/app/shared/services';
+import { Manifest } from '../models';
 
 @Component({
   selector: 'app-manifest-search',
@@ -25,8 +25,7 @@ export class ManifestSearchComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private inventoryService: InventoryService,
-    private configService: ConfigService,
-    private errorService: ErrorService) {
+    private configService: ConfigService) {
 
     }
 
@@ -35,8 +34,6 @@ export class ManifestSearchComponent implements OnInit {
       .subscribe(searchResponse => {
         this.manifests = searchResponse;
         this.dataSource.data = searchResponse.manifests;
-      }, (error) => {
-        this.errorService.handleError(error);
       });
   }
 
@@ -45,7 +42,7 @@ export class ManifestSearchComponent implements OnInit {
   }
 
   onDetails(id: string) {
-    const url = `/manifest/details/${id}`;
+    const url = `inventory/manifest/details/${id}`;
     this.router.navigate([url]);
   }
 

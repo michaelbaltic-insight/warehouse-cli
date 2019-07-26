@@ -7,13 +7,18 @@ import { RouterModule } from '@angular/router';
 
 import { CustomMaterialModule } from '../material.module';
 
-import { LoginFormComponent } from './login-form/login-form.component';
+import { LoginComponent } from './login/login.component';
+import { RegistrationComponent } from './registration/registration.component';
 
+import { AuthRoutingModule } from './auth-routing.module';
 import { AuthGuard } from './guards/auth.guard';
 import { AuthService } from './services/auth.service';
 
 @NgModule({
-  declarations: [LoginFormComponent],
+  declarations: [
+    LoginComponent,
+    RegistrationComponent,
+  ],
   providers: [
     AuthGuard,
     AuthService
@@ -23,7 +28,8 @@ import { AuthService } from './services/auth.service';
     RouterModule,
     HttpClientModule,
     ReactiveFormsModule,
-    CustomMaterialModule
+    CustomMaterialModule,
+    AuthRoutingModule
   ]
 })
 export class AuthModule { }

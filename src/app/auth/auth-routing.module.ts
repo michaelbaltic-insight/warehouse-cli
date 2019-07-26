@@ -1,17 +1,16 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { AuthGuard } from './guards';
 
-import { LoginFormComponent } from './login-form/login-form.component';
-import { RegistrationFormComponent } from './registration-form/registration-form.component';
+import { LoginComponent } from './login/login.component';
+import { RegistrationComponent } from './registration/registration.component';
 
 const routes: Routes = [
-  { path: 'registration', component: RegistrationFormComponent },
-  { path: 'login', component: LoginFormComponent },
+  { path: 'registration', component: RegistrationComponent },
+  { path: 'login', component: LoginComponent },
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
 

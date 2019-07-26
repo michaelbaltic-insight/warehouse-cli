@@ -11,10 +11,10 @@ import { CustomMaterialModule } from './material.module';
 import { AppRoutingModule } from './app-routing.module';
 
 import { CoreModule } from './core/core.module';
-import { AboutModule } from './about/about.module';
 import { HomeModule } from './home/home.module';
 import { AuthModule } from './auth/auth.module';
-import { ConfigService } from './shared/utils';
+import { InventoryModule } from './inventory/inventory.module';
+import { ConfigService } from './shared/services';
 
 import { fakeBackendProvider } from './_helpers';
 import { AuthHttpInterceptor } from './auth/interceptors';
@@ -32,9 +32,9 @@ import { AuthHttpInterceptor } from './auth/interceptors';
     CustomMaterialModule,
     HttpClientModule,
     CoreModule,
-    AboutModule,
     AuthModule,
-    HomeModule
+    HomeModule,
+    InventoryModule
   ],
   providers: [
 

@@ -1,1 +1,103 @@
-<p>manifest-details works!</p>
+<form [formGroup]="details" (ngSubmit)="onSave()">
+    <mat-card>
+        <mat-card-title>
+            {{ title }}
+        </mat-card-title>
+
+        <mat-card-content>
+
+            <mat-form-field>
+                <input type="text" matInput placeholder="Number" formControlName="number" [disabled]="isReadOnly">
+            </mat-form-field>
+
+            <mat-form-field>
+                <input type="text" matInput placeholder="Status" formControlName="status" [disabled]="isReadOnly">
+            </mat-form-field>
+
+        </mat-card-content>
+
+        <mat-card-actions>
+            <button mat-raised-button type="button" mat-button (click)="onSave()">Save Changes</button>
+        </mat-card-actions>
+    </mat-card>
+</form>
+
+<mat-card>
+
+    <mat-card-title>
+        {{ inventoryItemsTitle }}
+    </mat-card-title>
+
+    <mat-card-content>
+        <div class="mat-elevation-z8">
+
+            <table mat-table [dataSource]="dataSource" matSort class="inventory-item-table">
+
+                <ng-container matColumnDef="number">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header>Number</th>
+                    <td mat-cell *matCellDef="let item">{{item.number}}</td>
+                    <td mat-footer-cell *matFooterCellDef>Total</td>
+                </ng-container>
+
+                <ng-container matColumnDef="type">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header>Type</th>
+                    <td mat-cell *matCellDef="let item">{{item.type}}</td>
+                    <td mat-footer-cell *matFooterCellDef></td>
+                </ng-container>
+
+                <ng-container matColumnDef="status">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header>Status</th>
+                    <td mat-cell *matCellDef="let item">{{item.status}}</td>
+                    <td mat-footer-cell *matFooterCellDef></td>
+                </ng-container>
+
+                <ng-container matColumnDef="units">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header>Units</th>
+                    <td mat-cell *matCellDef="let item">{{item.units}}</td>
+                    <td mat-footer-cell *matFooterCellDef></td>
+                </ng-container>
+
+                <ng-container matColumnDef="details">
+                    <th mat-header-cell *matHeaderCellDef>Details</th>
+                    <td mat-cell *matCellDef="let element">
+                        <button mat-icon-button color="primary" (click)="onDetails(element.id)">
+                            <mat-icon class="mat-18">description</mat-icon>
+                        </button>
+                    </td>
+                    <td mat-footer-cell *matFooterCellDef></td>
+                </ng-container>
+
+                <ng-container matColumnDef="edit">
+                    <th mat-header-cell *matHeaderCellDef>Edit</th>
+                    <td mat-cell *matCellDef="let element">
+                        <button mat-icon-button color="accent" (click)="onEdit(element.id)">
+                            <mat-icon class="mat-18">edit</mat-icon>
+                        </button>
+                    </td>
+                    <td mat-footer-cell *matFooterCellDef></td>
+                </ng-container>
+
+                <ng-container matColumnDef="delete">
+                    <th mat-header-cell *matHeaderCellDef>Delete</th>
+                    <td mat-cell *matCellDef="let element">
+                        <button mat-icon-button color="warn" (click)="onDelete(element.id)">
+                            <mat-icon class="mat-18">delete</mat-icon>
+                        </button>
+                    </td>
+                    <td mat-footer-cell *matFooterCellDef></td>
+                </ng-container>
+
+                <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+                <tr mat-row *matRowDef="let rowItems; columns: displayedColumns"></tr>
+                <tr mat-footer-row *matFooterRowDef="displayedColumns"></tr>
+
+            </table>
+            <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+        </div>
+    </mat-card-content>
+
+    <mat-card-actions>
+        <button mat-raised-button color="primary" type="button" mat-button (click)="onAddInventoryItem()">Add New Inventory Item</button>
+    </mat-card-actions>
+
+</mat-card>

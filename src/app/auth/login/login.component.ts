@@ -5,8 +5,12 @@ import { first } from 'rxjs/operators';
 
 import { AuthService } from '../services';
 
-@Component({ templateUrl: 'login-form.component.html' })
-export class LoginFormComponent implements OnInit {
+@Component({ 
+  selector: 'app-login',
+  templateUrl: './login.component.html',
+  styleUrls: ['./login.component.scss']
+})
+export class LoginComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
@@ -15,8 +19,8 @@ export class LoginFormComponent implements OnInit {
     private authService: AuthService) { }
 
   // convenience getter for easy access to form fields
-  get f() { return this.loginForm.controls; }
-  loginForm: FormGroup;
+  get f() { return this.login.controls; }
+  login: FormGroup;
   loading = false;
   submitted = false;
   returnUrl: string;
@@ -24,7 +28,7 @@ export class LoginFormComponent implements OnInit {
   title = 'Login';
 
   ngOnInit() {
-    this.loginForm = this.formBuilder.group({
+    this.login = this.formBuilder.group({
       userName: ['', Validators.required],
       password: ['', Validators.required]
     });
@@ -40,7 +44,7 @@ export class LoginFormComponent implements OnInit {
     this.submitted = true;
 
     // stop here if form is invalid
-    if (this.loginForm.invalid) {
+    if (this.login.invalid) {
       return;
     }
 

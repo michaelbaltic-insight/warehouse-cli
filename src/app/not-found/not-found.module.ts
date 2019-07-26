@@ -3,15 +3,15 @@ import { CommonModule } from '@angular/common';
 
 import { CustomMaterialModule } from '../material.module';
 
-import { AboutRoutingModule } from './about-routing.module';
-import { AboutComponent } from './about.component';
+import { NotFoundRoutingModule } from './not-found-routing.module';
+import { NotFoundComponent } from './not-found.component';
 
 @NgModule({
   imports: [
     CommonModule,
     CustomMaterialModule,
-    AboutRoutingModule
+    NotFoundRoutingModule
   ],
-  declarations: [AboutComponent]
+  declarations: [NotFoundComponent]
 })
-export class AboutModule { }
+export class NotFoundModule { }

@@ -8,7 +8,7 @@ import { InventoryRoutingModule } from './inventory-routing.module';
 
 import { ManifestSearchComponent } from './manifest-search/manifest-search.component';
 import { ManifestDetailsComponent } from './manifest-details/manifest-details.component';
-import { InventoryItemsComponent } from './inventory-items/inventory-items.component';
+import { InventoryItemAddComponent } from './inventory-item-add/inventory-item-add.component';
 
 @NgModule({
   imports: [
@@ -20,7 +20,7 @@ import { InventoryItemsComponent } from './inventory-items/inventory-items.compo
   declarations: [
     ManifestSearchComponent,
     ManifestDetailsComponent,
-    InventoryItemsComponent
+    InventoryItemAddComponent
   ]
 })
 export class InventoryModule { }

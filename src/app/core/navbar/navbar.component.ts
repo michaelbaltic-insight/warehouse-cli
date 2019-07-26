@@ -4,8 +4,9 @@ import { AuthService } from '../../auth/services';
 import { User } from '../../auth/models';
 
 @Component({
-  templateUrl: 'navbar.component.html',
-  selector: 'app-navbar'
+  selector: 'app-navbar',
+  templateUrl: './navbar.component.html',
+  styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent implements OnInit {
   currentUser: User;

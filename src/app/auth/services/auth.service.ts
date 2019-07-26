@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { of, Observable, BehaviorSubject } from 'rxjs';
 import { catchError, mapTo, tap } from 'rxjs/operators';
-import { ConfigService } from '../../shared/utils';
+import { ConfigService } from '../../shared/services';
 import { BaseApiService } from '../../shared/services';
 import { User } from '../models';
 

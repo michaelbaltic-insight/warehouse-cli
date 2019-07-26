@@ -5,7 +5,11 @@ import { Observable } from 'rxjs';
 import { User } from '../auth/models';
 import { AuthService } from '../auth/services';
 
-@Component({ templateUrl: 'home.component.html' })
+@Component({
+  selector: 'app-home',
+  templateUrl: './home.component.html',
+  styleUrls: ['./home.component.scss']
+})
 export class HomeComponent implements OnInit {
   title = 'Home';
   loading = false;
