@@ -7,12 +7,8 @@ import { MatTableDataSource } from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
 import { InventoryService } from '../services';
 import { ConfigService } from 'src/app/shared/services';
-import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
-
-export interface DialogData {
-  number: string;
-  status: string;
-}
+import { MatDialog } from '@angular/material';
+import { ConfirmationDialogComponent } from 'src/app/core/confirmation-dialog/confirmation-dialog.component';
 
 @Component({
   selector: 'app-manifest-details',
@@ -28,7 +24,7 @@ export class ManifestDetailsComponent implements OnInit {
     private inventoryService: InventoryService,
     private configService: ConfigService,
     public dialog: MatDialog
-    ) { }
+  ) { }
 
   @ViewChild(MatSort, { static: true }) sort: MatSort;
 
@@ -80,14 +76,15 @@ export class ManifestDetailsComponent implements OnInit {
   }
 
   onDelete(id): void {
-    const dialogRef = this.dialog.open(DialogOverviewExampleDialog, {
-      width: '250px',
-      data: { number: this.manifestItem.number, status: this.manifestItem.status }
+    const dialogRef = this.dialog.open(ConfirmationDialogComponent, {
+      width: '350px',
+      data: { title: 'title', prompt: 'prompt', cancelButtonText: 'cancel', confirmationButtonText: 'ok' }
     });
-
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
-      this.manifestItem.number = result;
+      if (result) {
+        console.log('Yes clicked');
+        // DO SOMETHING
+      }
     });
   }
 
@@ -97,20 +94,4 @@ export class ManifestDetailsComponent implements OnInit {
     const url = `inventory/manifest/details/${id}/add`;
     this.router.navigate([url]);
   }
-}
-
-@Component({
-  selector: 'dialog-overview-example-dialog',
-  templateUrl: 'manifest-details.component-dialog.html',
-})
-export class DialogOverviewExampleDialog {
-
-  constructor(
-    public dialogRef: MatDialogRef<DialogOverviewExampleDialog>,
-    @Inject(MAT_DIALOG_DATA) public data: DialogData) {}
-
-  onNoClick(): void {
-    this.dialogRef.close();
-  }
-
 }

@@ -1,0 +1,13 @@
+<h1 mat-dialog-title>{{dialogData.title}}</h1>
+<div mat-dialog-content>
+  <div class="mat-dialog-content-message">
+    {{dialogData.message}}
+  </div>
+  <mat-form-field>
+    <input type="text" matInput placeholder="{{data.placeholder}}" [(ngModel)]="data.model">
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onCancel()">{{dialogData.cancelButtonText}}</button>
+  <button mat-button [mat-dialog-close]="true" cdkFocusInitial>{{dialogData.confirmationButtonText}}</button>
+</div>
