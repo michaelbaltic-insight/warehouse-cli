@@ -48,17 +48,6 @@ export class AuthService extends BaseApiService {
                 }));
     }
 
-    changePassword(user: { currentPassword: string, newPassword: string }): Observable<boolean> {
-        return this.http.post<any>(`${this.baseApiUrl}/auth/changepassword`, user)
-            .pipe(
-                tap(currentUser => this.doLoginUser(currentUser)),
-                mapTo(true),
-                catchError(error => {
-                    alert(error.error);
-                    return of(false);
-                }));
-    }
-
     resetPassword(user: { userName: string, email: string }): Observable<boolean> {
         return this.http.post<any>(`${this.baseApiUrl}/auth/resetpassword`, user)
             .pipe(
@@ -88,11 +77,11 @@ export class AuthService extends BaseApiService {
         return !!this.getAccessToken();
     }
 
-    private isInRole(role: string) : boolean {
+    private isInRole(role: string): boolean {
         return this.currentUserValue && this.currentUserValue.roles && this.currentUserValue.roles.indexOf(role) >= 0;
     }
 
-    get isAdmin() : boolean {
+    get isAdmin(): boolean {
         return this.isInRole('admin');
       }
 

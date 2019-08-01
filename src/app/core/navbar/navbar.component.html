@@ -5,6 +5,8 @@
       Home
     </a>
     <a mat-button [routerLink]="['/inventory']" [routerLinkActive]="['router-link-active']" [routerLinkActiveOptions]="{exact:true}" *ngIf="isAdmin">Inventory</a>
+    <a mat-button [routerLink]="['/change-password']" [routerLinkActive]="['router-link-active']" [routerLinkActiveOptions]="{exact:true}" *ngIf="isAdmin">Change Password</a>
+    <a mat-button [routerLink]="['/reset-password']" [routerLinkActive]="['router-link-active']" [routerLinkActiveOptions]="{exact:true}" *ngIf="isAdmin">Reset Password</a>
     <span class="toolbar-spacer"></span>
     <a mat-button *ngIf="currentUser" (click)="logout()">Logout</a>
     <mat-icon class="toolbar-icon">verified_user</mat-icon>

@@ -15,6 +15,7 @@ import { AuthGuard } from './guards/auth.guard';
 import { AuthService } from './services/auth.service';
 import { ChangePasswordComponent } from './change-password/change-password.component';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
+import { UserSettingsComponent } from './user-settings/user-settings.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { ResetPasswordComponent } from './reset-password/reset-password.componen
     RegistrationComponent,
     ChangePasswordComponent,
     ResetPasswordComponent,
+    UserSettingsComponent,
   ],
   providers: [
     AuthGuard,
