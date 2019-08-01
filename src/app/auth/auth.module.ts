@@ -13,11 +13,15 @@ import { RegistrationComponent } from './registration/registration.component';
 import { AuthRoutingModule } from './auth-routing.module';
 import { AuthGuard } from './guards/auth.guard';
 import { AuthService } from './services/auth.service';
+import { ChangePasswordComponent } from './change-password/change-password.component';
+import { ResetPasswordComponent } from './reset-password/reset-password.component';
 
 @NgModule({
   declarations: [
     LoginComponent,
     RegistrationComponent,
+    ChangePasswordComponent,
+    ResetPasswordComponent,
   ],
   providers: [
     AuthGuard,
