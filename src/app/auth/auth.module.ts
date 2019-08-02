@@ -14,6 +14,7 @@ import { AuthRoutingModule } from './auth-routing.module';
 import { AuthGuard } from './guards/auth.guard';
 import { AuthService } from './services/auth.service';
 import { ChangePasswordComponent } from './change-password/change-password.component';
+import { GeneratePasswordResetComponent } from './generate-password-reset/generate-password-reset.component';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
 import { UserSettingsComponent } from './user-settings/user-settings.component';
 
@@ -22,8 +23,9 @@ import { UserSettingsComponent } from './user-settings/user-settings.component';
     LoginComponent,
     RegistrationComponent,
     ChangePasswordComponent,
-    ResetPasswordComponent,
     UserSettingsComponent,
+    GeneratePasswordResetComponent,
+    ResetPasswordComponent
   ],
   providers: [
     AuthGuard,

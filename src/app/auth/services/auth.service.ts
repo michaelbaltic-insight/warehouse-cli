@@ -48,7 +48,18 @@ export class AuthService extends BaseApiService {
                 }));
     }
 
-    resetPassword(user: { userName: string, email: string }): Observable<boolean> {
+    generatePasswordReset(user: { userName: string, email: string }): Observable<boolean> {
+        return this.http.post<any>(`${this.baseApiUrl}/auth/generatepasswordreset`, user)
+            .pipe(
+                tap(currentUser => this.doLoginUser(currentUser)),
+                mapTo(true),
+                catchError(error => {
+                    alert(error.error);
+                    return of(false);
+                }));
+    }
+
+    resetPassword(user: { userName: string, email: string, passwordResetToken: string, newPassword: string }): Observable<boolean> {
         return this.http.post<any>(`${this.baseApiUrl}/auth/resetpassword`, user)
             .pipe(
                 tap(currentUser => this.doLoginUser(currentUser)),

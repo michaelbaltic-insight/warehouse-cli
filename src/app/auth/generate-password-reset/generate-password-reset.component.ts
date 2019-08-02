@@ -6,11 +6,11 @@ import { first } from 'rxjs/operators';
 import { AuthService } from '../services';
 
 @Component({
-  selector: 'app-reset-password',
-  templateUrl: './reset-password.component.html',
-  styleUrls: ['./reset-password.component.scss']
+  selector: 'app-generate-password-reset',
+  templateUrl: './generate-password-reset.component.html',
+  styleUrls: ['./generate-password-reset.component.scss']
 })
-export class ResetPasswordComponent implements OnInit {
+export class GeneratePasswordResetComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
@@ -19,37 +19,33 @@ export class ResetPasswordComponent implements OnInit {
     private authService: AuthService) { }
 
   // convenience getter for easy access to form fields
-  get f() { return this.resetPassword.controls; }
-  resetPassword: FormGroup;
+  get f() { return this.generatePasswordReset.controls; }
+  generatePasswordReset: FormGroup;
   loading = false;
   submitted = false;
   returnUrl: string;
   error = '';
-  title = 'Reset Password';
+  title = 'Generate Password Reset';
 
   ngOnInit() {
-    this.resetPassword = this.formBuilder.group({
+    this.generatePasswordReset = this.formBuilder.group({
       userName: ['', Validators.required],
-      email: ['', Validators.required],
-      passwordResetToken: ['', Validators.required],
-      newPassword: ['', Validators.required]
+      email: ['', Validators.required]
     });
   }
 
-  onResetPassword() {
+  onGeneratePasswordReset() {
     this.submitted = true;
 
     // stop here if form is invalid
-    if (this.resetPassword.invalid) {
+    if (this.generatePasswordReset.invalid) {
       return;
     }
 
     this.loading = true;
-    this.authService.resetPassword({
+    this.authService.generatePasswordReset({
       userName: this.f.userName.value,
-      email: this.f.email.value,
-      passwordResetToken: this.f.passwordResetToken.value,
-      newPassword: this.f.newPassword.value
+      email: this.f.email.value
     })
       .pipe(first())
       .subscribe(
