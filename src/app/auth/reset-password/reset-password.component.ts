@@ -14,7 +14,7 @@ export class ResetPasswordComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private route: ActivatedRoute,
+    private activeRoute: ActivatedRoute,
     private router: Router,
     private authService: AuthService) { }
 
@@ -28,10 +28,11 @@ export class ResetPasswordComponent implements OnInit {
   title = 'Reset Password';
 
   ngOnInit() {
+    const passwordResetToken: string = this.activeRoute.snapshot.params.passwordResetToken;
     this.resetPassword = this.formBuilder.group({
       userName: ['', Validators.required],
       email: ['', Validators.required],
-      passwordResetToken: ['', Validators.required],
+      passwordResetToken: [{ value: passwordResetToken, disabled: true }, Validators.required],
       newPassword: ['', Validators.required]
     });
   }

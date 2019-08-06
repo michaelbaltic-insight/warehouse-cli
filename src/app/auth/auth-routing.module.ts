@@ -16,7 +16,7 @@ const routes: Routes = [
   { path: 'user-settings', component: UserSettingsComponent, canActivate: [AuthGuard] },
   { path: 'change-password', component: ChangePasswordComponent, canActivate: [AuthGuard] },
   { path: 'generate-password-reset', component: GeneratePasswordResetComponent },
-  { path: 'reset-password', component: ResetPasswordComponent },
+  { path: 'reset-password/:passwordResetToken', component: ResetPasswordComponent },
 ];
 
 @NgModule({

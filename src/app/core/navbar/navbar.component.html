@@ -6,6 +6,7 @@
     </a>
     <a mat-button [routerLink]="['/inventory']" [routerLinkActive]="['router-link-active']" [routerLinkActiveOptions]="{exact:true}" *ngIf="isAdmin">Inventory</a>
     <a mat-button [routerLink]="['/change-password']" [routerLinkActive]="['router-link-active']" [routerLinkActiveOptions]="{exact:true}" *ngIf="isAdmin">Change Password</a>
+    <a mat-button [routerLink]="['/generate-password-reset']" [routerLinkActive]="['router-link-active']" [routerLinkActiveOptions]="{exact:true}" *ngIf="isAdmin">Generate Password Reset</a>
     <a mat-button [routerLink]="['/reset-password']" [routerLinkActive]="['router-link-active']" [routerLinkActiveOptions]="{exact:true}" *ngIf="isAdmin">Reset Password</a>
     <span class="toolbar-spacer"></span>
     <a mat-button *ngIf="currentUser" (click)="logout()">Logout</a>
